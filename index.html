@@ -29,7 +29,7 @@ document.getElementById('go').onclick=async()=>{
     if(r.ok) sha=(await r.json()).sha;
     const put=await fetch(url,{method:'PUT',headers:h,
       body:JSON.stringify({message:'new image',content:b64,sha})});
-    msg.textContent=put.ok?'Sent!':'Failed: '+put.status;
+    msg.textContent=put.ok?'Sent!':'Failed: '+put.status+' '+((await put.json()).message||'');
   }catch(e){msg.textContent='Error: '+e.message}
 };
 </script>
